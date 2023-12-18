@@ -1,9 +1,7 @@
 """
 Check the safety of a redirect URL.
 
-Extracted from Django's `url_has_allowed_host_and_scheme`.
-
-Source: https://github.com/django/django/blob/main/django/utils/http.py
+Extracted from Django's [`url_has_allowed_host_and_scheme`](https://github.com/django/django/blob/main/django/utils/http.py).
 """
 
 __version__ = "0.0.0"
@@ -20,12 +18,11 @@ def url_has_allowed_host_and_scheme(
 
     Always return ``False`` on an empty url.
 
-    If ``require_https`` is ``True``, only 'https' will be considered a valid
-    scheme, as opposed to 'http' and 'https' with the default, ``False``.
-
-    Note: "True" doesn't entail that a URL is "safe". It may still be e.g.
-    quoted incorrectly. Ensure to also use django.utils.encoding.iri_to_uri()
-    on the path component of untrusted URLs.
+    Args:
+        url: The URL to test.
+        allowed_hosts: Set of allowed hosts.
+        require_https: If ``True``, only 'https' will be considered a valid
+        scheme, as opposed to 'http' and 'https' with the default, ``False``.
     """
     url = url.strip()
     if not url:
