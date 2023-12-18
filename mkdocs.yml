@@ -1,0 +1,58 @@
+site_name: Safe Redirect URL
+site_description: Check the safety of a redirect URL. Extracted from Django's `url_has_allowed_host_and_scheme`.
+
+repo_url: https://github.com/frankie567/safe-redirect-url
+repo_name: frankie567/safe-redirect-url
+
+theme:
+    name: material
+    icon:
+        logo: material/link-lock
+    palette:
+        # Palette toggle for light mode
+        - media: "(prefers-color-scheme: light)"
+          scheme: default
+          primary: black
+          accent: yellow
+          toggle:
+            icon: material/brightness-7
+            name: Switch to dark mode
+
+        # Palette toggle for dark mode
+        - media: "(prefers-color-scheme: dark)"
+          scheme: slate
+          primary: black
+          accent: yellow
+          toggle:
+            icon: material/brightness-4
+            name: Switch to light mode
+
+markdown_extensions:
+    - toc:
+        permalink: true
+    - pymdownx.highlight:
+        anchor_linenums: true
+    - pymdownx.tasklist:
+        custom_checkbox: true
+    - pymdownx.inlinehilite
+    - pymdownx.snippets
+    - pymdownx.superfences
+
+plugins:
+    - search
+    - mkdocstrings:
+        handlers:
+            python:
+                import:
+                    - https://docs.python.org/3.11/objects.inv
+                options:
+                    docstring_style: google
+
+watch:
+    - docs
+    - safe_redirect_url
+
+nav:
+    - About: index.md
+    - Reference:
+        - safe_redirect_url: reference/safe_redirect_url.md

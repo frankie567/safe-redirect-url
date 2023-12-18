@@ -1,0 +1,68 @@
+[tool.ruff]
+target-version = "py311"
+extend-select = ["I", "TRY", "UP"]
+
+[tool.pytest.ini_options]
+addopts = "--cov=safe_redirect_url/ --cov-report=term-missing"
+
+
+[tool.hatch]
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.version]
+source = "regex_commit"
+commit_extra_args = ["-e"]
+path = "safe_redirect_url/__init__.py"
+
+[tool.hatch.envs.default]
+python = "3.11"
+dependencies = [
+    "mypy",
+    "ruff",
+    "pytest",
+    "pytest-cov",
+    "mkdocs-material",
+    "mkdocstrings[python]",
+    
+]
+
+[tool.hatch.envs.default.scripts]
+test = "pytest"
+test-cov-xml = "pytest --cov-report=xml"
+lint = [
+  "ruff format .",
+  "ruff --fix .",
+  "mypy safe_redirect_url/",
+]
+lint-check = [
+  "ruff format --check .",
+  "ruff .",
+  "mypy safe_redirect_url/",
+]
+docs-serve = "mkdocs serve"
+docs-build = "mkdocs build"
+
+[build-system]
+requires = ["hatchling", "hatch-regex-commit"]
+build-backend = "hatchling.build"
+
+[project]
+name = "safe-redirect-url"
+authors = [
+  { name = "safe-redirect-url", email = "fvoron@gmail.com" }
+]
+description = "Check the safety of a redirect URL. Extracted from Django's `url_has_allowed_host_and_scheme`."
+readme = "README.md"
+dynamic = ["version"]
+classifiers = [
+    "Programming Language :: Python :: 3 :: Only",
+]
+requires-python = ">=3.11"
+dependencies = [
+]
+
+[project.urls]
+Documentation = "https://frankie567.github.io/safe-redirect-url/"
+Source = "https://github.com/frankie567/safe-redirect-url"
