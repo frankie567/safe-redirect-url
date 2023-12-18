@@ -4,7 +4,7 @@ Check the safety of a redirect URL.
 Extracted from Django's [`url_has_allowed_host_and_scheme`](https://github.com/django/django/blob/main/django/utils/http.py).
 """
 
-__version__ = "0.0.0"
+__version__ = "0.1.0"
 
 import unicodedata
 from urllib.parse import urlparse
